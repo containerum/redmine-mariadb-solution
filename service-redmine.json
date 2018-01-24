@@ -1,0 +1,21 @@
+{
+    "kind": "Service",
+    "metadata": {
+        "labels": {
+            "external": "true",
+            "{{.NS_SELECTOR}}": "{{.REDMINE_NAME}}-{{.HASH}}"
+        },
+        "name": "{{.REDMINE_NAME}}-{{.HASH}}"
+    },
+    "spec": {
+        "selector": {
+            "{{.NS_SELECTOR}}": "{{.REDMINE_NAME}}-{{.HASH}}"
+        },
+        "ports": [
+            {
+                "protocol": "TCP",
+                "targetPort": {{.REDMINE_PORT}}
+            }
+        ]
+    }
+}

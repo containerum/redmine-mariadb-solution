@@ -1,0 +1,65 @@
+{
+  "kind": "Deployment",
+  "metadata": {
+    "name": "{{.REDMINE_NAME}}-{{.HASH}}"
+  },
+  "spec": {
+    "replicas": 1,
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "{{.REDMINE_NAME}}-{{.HASH}}"
+        },
+        "name": "{{.REDMINE_NAME}}-{{.HASH}}"
+      },
+      "spec": {
+        "containers": [
+          {
+            "env": [
+              {
+                "name": "REDMINE_DB_MYSQL",
+                "value": "{{.DB_NAME}}-{{.HASH}}"
+              },
+              {
+                "name": "REDMINE_DB_PORT",
+                "value": "{{.DB_PORT}}"
+              },
+              {
+                "name": "REDMINE_DB_USERNAME",
+                "value": "{{.REDMINE_DB_USERNAME}}"
+              },
+              {
+                "name": "REDMINE_DB_PASSWORD",
+                "value": "{{.REDMINE_DB_PASSWORD}}" 
+              },
+              
+                "name": "REDMINE_DB_DATABASE",
+                "value": "{{.REDMINE_DB_USERNAME}}" 
+              }
+           ],
+            "image": "{{.REDMINE_IMAGE}}",
+            "name": "{{.REDMINE_NAME}}",
+            "resources": {
+              "requests": {
+                "cpu": "{{.REDMINE_CPU}}",
+                "memory": "{{.REDMINE_RAM}}"
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "{{.REDMINEPATH}}",
+                "name": "{{.VOLUME}}",
+                "subPath": "{{.REDMINE_NAME}}-{{.HASH}}{{.REDMINEPATH}}"
+              }
+            ]
+          }
+        ],
+        "volumes": [
+          {
+            "name": "{{.VOLUME}}"
+          }
+        ]
+      }
+    }
+  }
+}

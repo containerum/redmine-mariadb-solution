@@ -1,0 +1,47 @@
+{
+  "env": {
+    "REDMINE_IMAGE": "redmine",
+    "REDMINE_NAME": "redmine",
+    "REDMINE_PORT": "3000",
+
+    "DB_IMAGE": "webhippie/mariadb:latest",
+    "DB_NAME": "mariadb",
+    "DB_PORT": "3306",
+
+    "REDMINE_DB_USERNAME": "redmine",
+    "REDMINE_DB_PASSWORD": "{{rand_string 12}}",
+    "REDMINE_DB_ROOT_PASS": "{{rand_string 20}}",
+
+    "REDMINE_CPU": "500m",
+    "REDMINE_RAM": "512Mi",
+    "DB_CPU": "500m",
+    "DB_RAM": "512Mi",
+
+    "MARIADB_MAX_ALLOWED_PACKET": "128M",
+    "MARIADB_INNODB_FILE_FORMAT": "Barracuda",
+    "MARIADB_INNODB_LARGE_PREFIX": "ON",
+
+    "DBDATA": "/pgdata",
+    "REDMINEPATH": "/usr/src/redmine/files",
+
+    "HASH": "{{rand_string 5}}"
+ },
+ "run":[
+    {
+      "type": "deployment",
+      "config_file": "deploy-db.json"
+    },
+    {
+      "type": "service",
+      "config_file": "service-db.json"
+    },
+    {
+      "type": "deployment",
+      "config_file": "deploy-redmine.json"
+    },
+    {
+      "type": "service",
+      "config_file": "service-redmine.json"
+    }
+  ]
+}
