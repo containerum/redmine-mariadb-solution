@@ -38,7 +38,7 @@
               },
               {
                 "name": "MARIADB_PASSWORD",
-                "value": "{{.REDMINE_DB_PASSWORD"}}"
+                "value": "{{.REDMINE_DB_PASSWORD}}"
               }
            ],
             "image": "{{.DB_IMAGE}}",
