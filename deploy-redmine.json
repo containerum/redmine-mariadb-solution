@@ -32,7 +32,7 @@
                 "name": "REDMINE_DB_PASSWORD",
                 "value": "{{.REDMINE_DB_PASSWORD}}" 
               },
-              
+              {
                 "name": "REDMINE_DB_DATABASE",
                 "value": "{{.REDMINE_DB_USERNAME}}" 
               }
