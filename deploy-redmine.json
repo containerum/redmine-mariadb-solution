@@ -26,11 +26,11 @@
               },
               {
                 "name": "REDMINE_DB_USERNAME",
-                "value": "{{.REDMINE_DB_USERNAME}}"
+                "value": "root"
               },
               {
                 "name": "REDMINE_DB_PASSWORD",
-                "value": "{{.REDMINE_DB_PASSWORD}}" 
+                "value": "{{.REDMINE_DB_ROOT_PASS}}" 
               },
               {
                 "name": "REDMINE_DB_DATABASE",
