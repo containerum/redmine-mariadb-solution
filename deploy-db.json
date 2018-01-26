@@ -17,6 +17,10 @@
           {
             "env": [
               {
+                "name": "MARIADB_DATABASE",
+                "value": "{{.DB_USER}}"
+              },
+              {
                 "name": "MARIADB_USERNAME",
                 "value": "{{.DB_USER}}"
               },
