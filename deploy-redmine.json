@@ -34,7 +34,7 @@
               },
               {
                 "name": "REDMINE_DB_DATABASE",
-                "value": "{{.REDMINE_DB_USERNAME}}" 
+                "value": "mysql" 
               }
            ],
             "image": "{{.REDMINE_IMAGE}}",
