@@ -1,11 +1,11 @@
 {
   "env": {
     "REDMINE_IMAGE": "redmine",
-    "REDMINE_NAME": "redmine",
+    "REDMINE_NAME": "solution-redmine",
     "REDMINE_PORT": "3000",
 
     "DB_IMAGE": "webhippie/mariadb:latest",
-    "DB_NAME": "mariadb",
+    "DB_NAME": "solution-mariadb",
     "DB_PORT": "3306",
 
     "REDMINE_DB_USERNAME": "redmine",
