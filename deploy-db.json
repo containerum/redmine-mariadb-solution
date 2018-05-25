@@ -1,73 +1,41 @@
 {
-  "kind": "Deployment",
-  "metadata": {
-    "name": "{{.DB_NAME}}-{{.HASH}}"
-  },
-  "spec": {
-    "replicas": 1,
-    "template": {
-      "metadata": {
-        "labels": {
-          "app": "{{.DB_NAME}}-{{.HASH}}"
-        },
-        "name": "{{.DB_NAME}}-{{.HASH}}"
-      },
-      "spec": {
-        "containers": [
-          {
-            "env": [
-              {
-                "name": "MARIADB_DATABASE",
-                "value": "{{.DB_USER}}"
-              },
-              {
-                "name": "MARIADB_USERNAME",
-                "value": "{{.DB_USER}}"
-              },
-              {
-                "name": "MARIADB_INNODB_LARGE_PREFIX",
-                "value": "{{.MARIADB_INNODB_LARGE_PREFIX}}"
-              },
-              {
-                "name": "MARIADB_INNODB_FILE_FORMAT",
-                "value": "{{.MARIADB_INNODB_FILE_FORMAT}}"
-              },
-              {
-                "name": "MARIADB_MAX_ALLOWED_PACKET",
-                "value": "{{.MARIADB_MAX_ALLOWED_PACKET}}"
-              },
-              {
-                "name": "MARIADB_ROOT_PASSWORD",
-                "value": "{{.REDMINE_DB_ROOT_PASS}}"
-              },
-              {
-                "name": "MARIADB_PASSWORD",
-                "value": "{{.REDMINE_DB_PASSWORD}}"
-              }
-           ],
-            "image": "{{.DB_IMAGE}}",
-            "name": "{{.DB_NAME}}",
-            "resources": {
-              "requests": {
-                "cpu": "{{.DB_CPU}}",
-                "memory": "{{.DB_RAM}}"
-              }
-            },
-            "volumeMounts": [
-              {
-                "mountPath": "{{.DBDATA}}",
-                "name": "{{.VOLUME}}",
-                "subPath": "{{.DB_NAME}}-{{.HASH}}{{.DB_DATA}}"
-              }
-            ]
-          }
-        ],
-        "volumes": [
-          {
-            "name": "{{.VOLUME}}"
-          }
-        ]
-      }
-    }
-  }
+	"containers": [{
+		"image": "{{.DB_IMAGE}}",
+		"name": "{{.DB_NAME}}-{{.HASH}}",
+		"limits": {
+			"cpu": {.DB_CPU}},
+			"memory": {{.DB_RAM}}
+		},
+		"env": [{
+				"name": "MARIADB_DATABASE",
+				"value": "{{.DB_USER}}"
+			},
+			{
+				"name": "MARIADB_USERNAME",
+				"value": "{{.DB_USER}}"
+			},
+			{
+				"name": "MARIADB_INNODB_LARGE_PREFIX",
+				"value": "{{.MARIADB_INNODB_LARGE_PREFIX}}"
+			},
+			{
+				"name": "MARIADB_INNODB_FILE_FORMAT",
+				"value": "{{.MARIADB_INNODB_FILE_FORMAT}}"
+			},
+			{
+				"name": "MARIADB_MAX_ALLOWED_PACKET",
+				"value": "{{.MARIADB_MAX_ALLOWED_PACKET}}"
+			},
+			{
+				"name": "MARIADB_ROOT_PASSWORD",
+				"value": "{{.REDMINE_DB_ROOT_PASS}}"
+			},
+			{
+				"name": "MARIADB_PASSWORD",
+				"value": "{{.REDMINE_DB_PASSWORD}}"
+			}
+		]
+	}],
+	"name": "{{.DB_NAME}}-{{.HASH}}",
+	"replicas": 1
 }

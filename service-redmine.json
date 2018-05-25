@@ -1,21 +1,10 @@
+
 {
-    "kind": "Service",
-    "metadata": {
-        "labels": {
-            "external": "true",
-            "{{.NS_SELECTOR}}": "{{.REDMINE_NAME}}-{{.HASH}}"
-        },
-        "name": "{{.REDMINE_NAME}}-{{.HASH}}"
-    },
-    "spec": {
-        "selector": {
-            "{{.NS_SELECTOR}}": "{{.REDMINE_NAME}}-{{.HASH}}"
-        },
-        "ports": [
-            {
-                "protocol": "TCP",
-                "targetPort": {{.REDMINE_PORT}}
-            }
-        ]
-    }
+    "name": "{{.REDMINE_NAME}}-{{.HASH}}",
+    "deploy": "{{.REDMINE_NAME}}-{{.HASH}}",
+    "ports": [{
+        "name": "redmine",
+        "target_port": {{.REDMINE_PORT}},
+        "protocol": "TCP"
+        }]
 }

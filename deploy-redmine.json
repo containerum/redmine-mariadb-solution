@@ -1,65 +1,33 @@
 {
-  "kind": "Deployment",
-  "metadata": {
-    "name": "{{.REDMINE_NAME}}-{{.HASH}}"
-  },
-  "spec": {
-    "replicas": 1,
-    "template": {
-      "metadata": {
-        "labels": {
-          "app": "{{.REDMINE_NAME}}-{{.HASH}}"
-        },
-        "name": "{{.REDMINE_NAME}}-{{.HASH}}"
-      },
-      "spec": {
-        "containers": [
-          {
-            "env": [
-              {
-                "name": "REDMINE_DB_MYSQL",
-                "value": "{{.DB_NAME}}-{{.HASH}}"
-              },
-              {
-                "name": "REDMINE_DB_PORT",
-                "value": "{{.DB_PORT}}"
-              },
-              {
-                "name": "REDMINE_DB_USERNAME",
-                "value": "root"
-              },
-              {
-                "name": "REDMINE_DB_PASSWORD",
-                "value": "{{.REDMINE_DB_ROOT_PASS}}" 
-              },
-              {
-                "name": "REDMINE_DB_DATABASE",
-                "value": "mysql" 
-              }
-           ],
-            "image": "{{.REDMINE_IMAGE}}",
-            "name": "{{.REDMINE_NAME}}",
-            "resources": {
-              "requests": {
-                "cpu": "{{.REDMINE_CPU}}",
-                "memory": "{{.REDMINE_RAM}}"
-              }
-            },
-            "volumeMounts": [
-              {
-                "mountPath": "{{.REDMINEPATH}}",
-                "name": "{{.VOLUME}}",
-                "subPath": "{{.REDMINE_NAME}}-{{.HASH}}{{.REDMINEPATH}}"
-              }
-            ]
-          }
-        ],
-        "volumes": [
-          {
-            "name": "{{.VOLUME}}"
-          }
-        ]
-      }
-    }
-  }
+	"containers": [{
+		"image": "{{.REDMINE_IMAGE}}",
+		"name": "{{.REDMINE_NAME}}-{{.HASH}}",
+		"limits": {
+			"cpu": {{.REDMINE_CPU}},
+			"memory": {{.REDMINE_RAM}}
+		},
+		"env": [{
+				"name": "REDMINE_DB_MYSQL",
+				"value": "{{.DB_NAME}}-{{.HASH}}"
+			},
+			{
+				"name": "REDMINE_DB_PORT",
+				"value": "{{.DB_PORT}}"
+			},
+			{
+				"name": "REDMINE_DB_USERNAME",
+				"value": "root"
+			},
+			{
+				"name": "REDMINE_DB_PASSWORD",
+				"value": "{{.REDMINE_DB_ROOT_PASS}}"
+			},
+			{
+				"name": "REDMINE_DB_DATABASE",
+				"value": "mysql"
+			}
+		]
+	}],
+	"name": "{{.REDMINE_NAME}}-{{.HASH}}",
+	"replicas": 1
 }
