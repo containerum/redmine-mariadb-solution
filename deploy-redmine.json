@@ -1,14 +1,14 @@
 {
 	"containers": [{
 		"image": "{{.REDMINE_IMAGE}}",
-		"name": "{{.REDMINE_NAME}}-{{.HASH}}",
+		"name": "{{.REDMINE_NAME}}{{.HASH}}",
 		"limits": {
 			"cpu": {{.REDMINE_CPU}},
 			"memory": {{.REDMINE_RAM}}
 		},
 		"env": [{
 				"name": "REDMINE_DB_MYSQL",
-				"value": "{{.DB_NAME}}-{{.HASH}}"
+				"value": "{{.DB_NAME}}{{.HASH}}"
 			},
 			{
 				"name": "REDMINE_DB_PORT",
@@ -28,6 +28,6 @@
 			}
 		]
 	}],
-	"name": "{{.REDMINE_NAME}}-{{.HASH}}",
+	"name": "{{.REDMINE_NAME}}{{.HASH}}",
 	"replicas": 1
 }
