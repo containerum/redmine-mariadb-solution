@@ -24,7 +24,7 @@
     "DBDATA": "/pgdata",
     "REDMINEPATH": "/usr/src/redmine/files",
 
-    "HASH": "{{rand_string 5}}"
+    "HASH": "{{rand_string_minus 5}}"
  },
  "run":[
     {
