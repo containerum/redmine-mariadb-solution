@@ -12,10 +12,10 @@
     "REDMINE_DB_PASSWORD": "{{rand_string 12}}",
     "REDMINE_DB_ROOT_PASS": "{{rand_string 20}}",
 
-    "REDMINE_CPU": "250",
-    "REDMINE_RAM": "256",
-    "DB_CPU": "250",
-    "DB_RAM": "256",
+    "REDMINE_CPU": "100",
+    "REDMINE_RAM": "128",
+    "DB_CPU": "100",
+    "DB_RAM": "128",
 
     "MARIADB_MAX_ALLOWED_PACKET": "128M",
     "MARIADB_INNODB_FILE_FORMAT": "Barracuda",
