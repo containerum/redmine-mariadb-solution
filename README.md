@@ -44,5 +44,3 @@ $ chkit get svc
 +------------------------+---------------+----------+-------------------+----------------+-----+
 ```
 4. Go to `x3.containerum.io:32643`and create queues using UI.
-
-![](/gif/redminepsqlsln.gif)
